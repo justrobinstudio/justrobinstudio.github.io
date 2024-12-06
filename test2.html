@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Itim&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+	  
+    body {
+      background-color: lightpink;
+	  font-family: 'Inter', sans-serif;
+	  font-variation-settings: 'wght' 500;
+	  margin: 50px;
+	  font-color: red;
+	  font-size: 30px;
+    }
+	
+	button {
+	  background-color: red;
+	  border: none;
+	  border-radius: 15px;
+	  color: white;
+	  padding: 10px 15px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 16px;
+	  margin: 2px 2px;
+	  cursor: pointer;
+	}
+	
+	input {
+	  background-color: white;
+	  border: none;
+	  border-radius: 15px;
+	  color: black;
+	  padding: 10px 15px;
+	  text-align: left;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 16px;
+	  margin: 2px 2px;
+	  cursor: pointer;
+	}
+	
+	h1 {
+		text-align: center;
+		font-color: white;
+		font-size: 90px;
+		font-variation-settings: 'wght' 900;
+	}
+	
+	h2{
+		font-size: 1.5em;
+	}
+	
+
+
+  </style>
+</head>
+<title>Latihan Matematika12345678</title>
+<body>
+<h1 >Latihan Matematika 1234567</h1>
+
+
+	<h2> Bilangan Bulat</h2>
+	<ol>
+		<li>Penjumlahan</li>
+		<input id="BBPenjumlahanBox"><button onclick="BBPenjumlahan">Test</button>
+		<li>Pengurangan</li>
+			<input id="BBPenjumlahanBox"><button onclick="BBPenjumlahan">Test</button>
+		<li>Perkalian</li>
+			<input id="BBPenjumlahanBox"><button onclick="BBPenjumlahan">Test</button>
+		<li>Pembagian</li>
+		<li>Soal Cerita</li>
+		<li>Faktorisasi Prima</li>
+		<li>KPK</li>
+		<li>FPB</li>
+	</ol>
+<p id="Integer"></p>
+
+<input id="answerbox" value="we" type="text"/><button onclick="ansfunction()"> Send </button>
+<p id="pop"></p>
+
+<script>
+function BBpenjumlahan{
+
+}
+
+let answervar
+
+function getInteger() {
+  let x1 = getIntergerNZ(-9,9);
+  let x2 = getIntergerNZ(-9,9);
+  do{
+  x2 = getIntergerNZ(-9,9);
+  } while (x1 + x2 == 0);
+  let c1 = getIntergerNZ(-9,9);
+  let c2 = getIntergerNZ(-9,9);
+  do{
+  c2 = getIntergerNZ(-9,9);
+  } while (c1 + c2 == 0);
+  let text = `${x1}x + ${c1} + ${x2}x + ${c2}`;
+  let texted = text.replaceAll("+ -"," – ");
+	texted = texted.replace("-"," – ");
+	texted = texted.replaceAll("1x","x");
+  let ansx = x1 + x2;
+  let ansc = c1 + c2;
+  let ans = `${ansx}x + ${ansc}`;
+  answervar = ans.replaceAll("+ -"," – ");
+  document.getElementById("Integer").innerHTML =texted;
+}
+
+function getIntergerNZ(min, max) {
+  let randomNum;
+  do {
+    randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+  } while (randomNum === 0);
+  return randomNum;
+}
+
+function ansfunction(){
+let ans = answervar.replaceAll(/\s+/g,'');
+ans = ans.replaceAll("–","-");
+let input = document.getElementById("answerbox").value;
+input = input.replaceAll(/\s+/g,'');
+input = cleanonex(input);
+ if (ans == input){
+	answ = "benar";
+	} else {
+	answ = "salah";
+	}
+document.getElementById("pop").innerHTML = answ+"#"+input+"#"+ans;
+document.getElementById("answerbox").value = "";
+}
+
+
+function cleanonex (text) {
+text = text.replaceAll("1x","x");
+return text;
+}
+</script>
+
+</body>
+</html>
