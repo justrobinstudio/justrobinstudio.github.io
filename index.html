@@ -3,8 +3,13 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Itim&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.min.js"></script>
-</head>
+<!--	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.min.js"></script>
+</head> -->
+  <script src="https://cdn.jsdelivr.net/npm/nerdamer@latest/nerdamer.core.js"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/nerdamer@latest/Algebra.js"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/nerdamer@latest/Calculus.js"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/nerdamer@latest/Solve.js"></script> 
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 
@@ -13,21 +18,32 @@ body {
 	color: darkred;
   font-family: 'Inter', sans-serif;
   font-variation-settings: 'wght' 600;
-  margin: 3cqw;
+  margin: 3px;
   font-size: 20px;
   }
 
 h1 {
   text-align: center;
   font-size: 50px;
-	font-variation-settings: 'wght' 400;
+	font-variation-settings: 'wght' 300;
+  margin: 0;
 	}
 	
+h2 {
+  text-align: center;
+  font-size: 30px;
+	font-variation-settings: 'wght' 300;
+  margin: 0;
+  margin-bottom: 20px;
+	}
+
+
 h3{
+
     font-size: 2em;
     font-variation-settings: 'wght' 200;
-   
   }
+
 
 button {
   background-color: darkred;
@@ -63,8 +79,10 @@ input {
 }
 
 input::placeholder {
-  color: lightcoral; /* Change the placeholder color to gray */
+  color: lightcoral;
 }
+
+
 .sendbttn{
   width : 50px;
 }
@@ -83,9 +101,10 @@ display:inline;
 }
 
 .accordion-item {
-  overflow: hidden;
+  overflow: visible;
   margin-top: 5px;
 }
+
 
 .accordion-header {
   padding-left: 8px;
@@ -104,6 +123,11 @@ display:inline;
   color: lightpink;
 }
 
+.accordion-header::marker{
+  color:aquamarine
+}
+
+
 .expand {
   font-variation-settings: 'wght' 600;
 }
@@ -117,13 +141,28 @@ display:inline;
   margin-bottom: 15px;
 }
 
+
+ol {
+  list-style: decimal;
+  padding-left: 50px;
+}
+
+ol li::marker{
+  font-size: 2em;
+  font-variation-settings: 'wght' 200;
+
+}
+
+button:focus{
+  background-color: aqua;
+}
 </style>
 
 <body>
 <h1>LATIHAN MATEMATIKA</h1>
-<div class="accordion-container"></div>
+<h2>ALJABAR</h2>
+<ol id="accordionContainer" class="accordion-container"></ol>
 <div id="test"></div>
-
 
 <script>
 
@@ -133,7 +172,7 @@ const accordionData = [
     function: "AjUnsur"
   },
   {
-    title: "Penjumlahan & Pengurangan",
+    title: "Penjumlahan dan Pengurangan",
     function: "AjJumlahKurang"
   },
   {
@@ -151,12 +190,14 @@ const accordionData = [
   // ... more sections
 ];
 
-const accordionContainer = document.querySelector(".accordion-container");
+
+const accordionContainer = document.getElementById("accordionContainer");
+
 
 accordionData.forEach(section => {
-  const accordionItem = document.createElement("div");
-  accordionItem.classList.add("accordion-item");
-
+  const accordionItem = document.createElement("li");
+   accordionItem.classList.add("accordion-item");
+  
   const accordionHeader = document.createElement("h3");
   accordionHeader.classList.add("accordion-header");
   accordionHeader.textContent = section.title;
@@ -170,9 +211,13 @@ accordionData.forEach(section => {
   
   const accordionContent = document.createElement("button");
   accordionContent.id = "get"+section.function;
-  accordionContent.textContent = "Soal Baru";
+  accordionContent.textContent = "+";
+  accordionContent.classList.add("sendbttn");
   accordionContent.addEventListener("click", () => {
-  eval(accordionContent.id+"()")
+    window[accordionContent.id]();
+  });
+  accordionContent.addEventListener("focus", () => {
+    document.getElementById("test").innerHTML="asdfg";
   });
 
   const accordionSoal = document.createElement("span");
@@ -184,7 +229,7 @@ accordionData.forEach(section => {
   accordionInput.placeholder= "Jawaban";
   accordionInput.addEventListener("keydown",function(event){
      if(event.keyCode === 13) {
-      eval("send"+section.function+"()")
+      window["send"+section.function]();
     }});
 
 
@@ -193,7 +238,7 @@ accordionData.forEach(section => {
   accordionSend.textContent = "-->";
   accordionSend.classList.add("sendbttn");
   accordionSend.addEventListener("click", () => {
-  eval(accordionSend.id+"()")
+    window[accordionSend.id]();
   });
 
   const accordionOutput = document.createElement("span");
@@ -204,7 +249,7 @@ accordionData.forEach(section => {
   accordionShow.textContent =  "?";
   accordionShow.classList.add("sendbttn");
   accordionShow.addEventListener("click", () => {
-  eval(accordionShow.id+"()")
+    window[accordionShow.id]();
   });
 
   accordionBody.appendChild(accordionContent);
@@ -213,12 +258,14 @@ accordionData.forEach(section => {
   accordionBody.appendChild(accordionSend);
   accordionBody.appendChild(accordionShow);
   accordionBody.appendChild(accordionOutput);
- 
+
   accordionItem.appendChild(accordionHeader);
   accordionItem.appendChild(accordionBody);
  
   accordionContainer.appendChild(accordionItem);
+
 });
+
 
 let ansArray = {};
 
@@ -269,6 +316,7 @@ function sendAjUnsur(){
     soal = document.getElementById("soal"+w).textContent;
     soal = soal.slice(0, -4);
 	  answ = "Jawaban kamu benar. "+soal+" "+ ans;
+    document.getElementById("show"+w).focus;
 	} else {
 	  answ = "Jawaban kamu salah. Coba lagi.";
 	  document.getElementById("input"+w).focus();
@@ -397,9 +445,9 @@ let w = "AjDuaDua";
   let b = getIntergerNZ(-5,5);
   let c = getIntergerNZ(-5,5);
   let d = getIntergerNZ(-5,5);
-  let soal = ` ( ${a}x + ${b} ) ( ${c}x +${d} )`;
+  let soal = ` ( ${a}x + ${b} ) ( ${c}x + ${d} )`;
   soal = pretty(soal);
-	let ans = (a*a)+"x² + "+(a*d+b*c)+"x +"+(d*d);
+	let ans = (a*c)+"x² + "+(a*d+b*c)+"x +"+(b*d);
 	ans = pretty(ans);
 	ansArray[w] = ans;
   document.getElementById("input"+w).focus();
@@ -484,8 +532,6 @@ function showAjKuadrat(){
   ans = "Jawaban yang benar adalalah "+ ansArray[w];
   document.getElementById("output"+w).innerHTML = ans;
 }
-
-
 
 </script>
 </body>
