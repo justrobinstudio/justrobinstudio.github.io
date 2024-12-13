@@ -211,7 +211,7 @@ accordionData.forEach(section => {
   
   const accordionContent = document.createElement("button");
   accordionContent.id = "get"+section.function;
-  accordionContent.textContent = "+";
+  accordionContent.textContent = "+New";
   accordionContent.classList.add("sendbttn");
   accordionContent.addEventListener("click", () => {
     window[accordionContent.id]();
