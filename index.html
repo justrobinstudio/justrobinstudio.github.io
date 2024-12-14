@@ -190,8 +190,11 @@ const accordionData = [
   // ... more sections
 ];
 
+let ansArray = {};
+
 
 const accordionContainer = document.getElementById("accordionContainer");
+
 
 
 accordionData.forEach(section => {
@@ -201,7 +204,12 @@ accordionData.forEach(section => {
   const accordionHeader = document.createElement("h3");
   accordionHeader.classList.add("accordion-header");
   accordionHeader.textContent = section.title;
+  
   accordionHeader.addEventListener("click", () => {
+  if(typeof ansArray[section.function] === 'undefined'){
+    window["get"+section.function]();
+  }
+
   accordionItem.classList.toggle("active");
   accordionHeader.classList.toggle("expand");
   });
@@ -211,7 +219,7 @@ accordionData.forEach(section => {
   
   const accordionContent = document.createElement("button");
   accordionContent.id = "get"+section.function;
-  accordionContent.textContent = "+New";
+  accordionContent.textContent = "Coba Soal Lain";
   accordionContent.addEventListener("click", () => {
     window[accordionContent.id]();
   });
@@ -251,13 +259,14 @@ accordionData.forEach(section => {
     window[accordionShow.id]();
   });
 
-  accordionBody.appendChild(accordionContent);
+  
   accordionBody.appendChild(accordionSoal);
   accordionBody.appendChild(accordionInput);
   accordionBody.appendChild(accordionSend);
   accordionBody.appendChild(accordionShow);
   accordionBody.appendChild(accordionOutput);
-
+  accordionBody.appendChild(accordionContent);
+  
   accordionItem.appendChild(accordionHeader);
   accordionItem.appendChild(accordionBody);
  
@@ -266,7 +275,7 @@ accordionData.forEach(section => {
 });
 
 
-let ansArray = {};
+
 
 function getIntergerNZ(min, max) {
   let randomNum;
