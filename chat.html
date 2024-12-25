@@ -25,6 +25,7 @@ body{
   align-items: center;
   height: 100vh;
   box-sizing: border-box; 
+  margin: 5px;
 }
 
 h1{
@@ -183,7 +184,8 @@ option{
     </div>
 -->
     <div class="headerContainer">
-      <select id="stateSelect"></select>
+      <!--<select id="stateSelect"></select>-->
+      Aljabar
     </div>
     <div class="chatContainer questionBase">
         <div class="msgpinned">
@@ -216,6 +218,10 @@ option{
   const chatContainer =  document.querySelector(".chatContainer");
   const inputMsg =  document.getElementById("inputMsg");
 
+
+  window.onload = function() { var input = document.getElementById('autoFocusInput'); input.focus(); }
+
+  
   const mySelect = document.getElementById('stateSelect');
   mySelect.addEventListener('change', function() {
     const selectedValue = this.value; 
