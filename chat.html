@@ -33,28 +33,31 @@ h1{
 }
 
 select{
-    font-size: 25pt;
+    font-size: 20pt;
     margin: 5px;
     color: #ffffff;
     background-color: transparent;
     border-color: transparent;
-    max-width: 500px;
+    max-width: 300px;
     margin: auto;
-    overflow: hidden;
     padding: 5px;
-    height: fit-content;
-    text-align: center;
+
     box-sizing: border-box; 
-    overflow-wrap: anywhere;
-    white-space: normal;
-}
+
+
+    overflow: hidden;
+    white-space: normal; /* Prevents text from wrapping */
+    text-overflow: ellipsis; /* Adds ellipsis for overflow text */
+    display: inline-block;
+    vertical-align: middle; }
+
 
 option{
   font-size: 10pt;
   white-space: normal;
   background-color: var(--accent-color);
   overflow: auto;
-
+  max-width: 500px;
 }
 
 .standardfont{
@@ -211,6 +214,7 @@ option{
   let attempt, stateNow, ansState, ansVar=[];
   stateNow = "AjJumlahKurang";
   const chatContainer =  document.querySelector(".chatContainer");
+  const inputMsg =  document.getElementById("inputMsg");
 
   const mySelect = document.getElementById('stateSelect');
   mySelect.addEventListener('change', function() {
@@ -247,7 +251,7 @@ option{
     const drop = document.getElementById("stateSelect");
     stateList.forEach(section => {
       const opt = document.createElement("option");
-      opt.textContent = section.title;
+      opt.textContent = section.function;
       opt.value = section.function;
       drop.appendChild(opt);
     });
@@ -290,7 +294,6 @@ option{
 
   //print the text
   function getOut(w,soal,ans){
-      document.getElementById("sendMsg").textContent = soal;
     //  ansVar[0] = ans;
       const msgPin = document.createElement("div");
       msgPin.classList.add ("msgpinned");
@@ -298,19 +301,19 @@ option{
       msgDiv.classList.add ("msg","msgBot");
       const msgP = document.createElement("p");
       msgP.textContent = soal;
+
+
       msgDiv.appendChild(msgP);
       msgPin.appendChild(msgDiv);
       chatContainer.appendChild(msgPin);
       document.getElementById("inputMsg").innerHTML = ""; 
       chatContainer.scrollTop = chatContainer.scrollHeight;
-
-      
-      const msgDiv2 = document.createElement("div");
-      msgDiv2.classList.add ("msg","msgBot");
+  
       const msgB = document.createElement("button");
       msgB.textContent = soal+"=...";
-      msgDiv2.appendChild(msgB);
-      chatContainer.appendChild(msgDiv2);
+      msgDiv.appendChild(msgB);
+
+      inputMsg.value = ``;
   }
 
 
