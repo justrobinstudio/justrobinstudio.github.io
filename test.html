@@ -1,0 +1,21 @@
+<body>
+    <div id = 'pp'>asdfsdf</div>
+    <button onclick=" fetchData()">bnuarg</button>
+    <button onclick=" displayThat()">bnuarg</button>
+</body>
+<script>
+       const pp = document.getElementById('pp')
+function displayThat(){
+ 
+    pp.textContent = 'asdfgasdfghgf';
+    const x = fetchData('test.json');
+    pp.textContent += JSON.stringify(x);
+    
+}
+async function fetchData(filePath) {
+     pp.textContent = 'plmpnm'
+  const response = await fetch('test.json');
+    return await response.json(); 
+    pp.textContent = 'plmpnmoooooooooooooo'
+}
+</script>
