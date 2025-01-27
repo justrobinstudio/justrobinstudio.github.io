@@ -384,7 +384,6 @@ function findCharacterPosition(string, character) {
   }
 
  
-currentScheme = 1
 function cycleColorScheme() {
   const root = document.documentElement;
   root.classList.remove(`scheme-${currentScheme}`);
