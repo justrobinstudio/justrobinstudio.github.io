@@ -83,7 +83,6 @@ function getSoal(questionKind){
 
 function getHelp(){
     relation = whatRelation().toLowerCase()
-    makeBubbleUser(relation)
     if (input.length != 1) {
         makeBubbleBot('Jawaban berupa satu digit/huruf. Misal: a, b, 1, 2, ...');
         attemptAnswer += 1;

@@ -7,7 +7,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <h1>LATIHAN</h1>
+  <div style="text-align: right; width: 100%; max-width: 500px; margin-top: 5px; font-size: 30px;">
+    <button onclick="cycleColorScheme()" style="font-size: 85%; font-variation-settings: 'wght'400; background-color: #00000000; border:none; cursor: pointer;">
+      <i class="fa-solid fa-palette"></i>
+  </button>  
+  </div>
+  <h1>LATIHAN</h1>
+    
     <!--<p style="font-size: 20px;">Submit hasil masih dalam proses, sementara untuk latihan dulu ya.</p>-->
     <div class="headerContainer">
      <!--   <select id="stateSelect"></select> -->
@@ -52,9 +58,15 @@
   
 
 <script>
+
+  
   /*URL PARAM*/
   const urlParams = new URLSearchParams(window.location.search);
-  const rawParams = urlParams.get('test')
+  const rawParams = urlParams.get('q')
+  if (rawParams === null) {
+  window.location.href = 'landingpage.html'; 
+  }
+
   const subchapterTitle = rawParams.split('.')[1].toUpperCase();
   const h1 = document.querySelector("h1");
   h1.textContent += ` ${subchapterTitle}`;
@@ -77,6 +89,7 @@ async function main() {
   letsTest();
   console.log("myScript.js loaded, now proceed to next line"); 
 }
+
 
 main();
 
