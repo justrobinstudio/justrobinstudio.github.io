@@ -1,3 +1,7 @@
+function letsGo(url){
+    window.location.href = url;
+}
+
 function letsStart(){
     makeBubbleBot('Hello!');
     makeBubbleBot('Sebelum memulai belajar, kita kenalan dulu');
@@ -288,7 +292,7 @@ function replaceChar(str, index, replacement) {
         input = input.toLowerCase(input.trim());
         if (input == 'minta jawaban' & attemptAnswer>5){
             makeBubbleBot(`Jawabannya adalah ${qArray.displayAnswer}.`);
-            makeBubbleBot(`ketik dan kirim untuk melanjutkan ke soal berikutnya`);
+            makeBubbleBot(`ketik dan kirim jawaban untuk melanjutkan ke soal berikutnya`);
         } else if (isItTrue()) {
             makeBubbleBot('Jawaban kamu benar');
             questionProgress += 1;
@@ -368,3 +372,14 @@ function fetchChapterInfo(JSONData){
     console.error('Fetch error:', error);
   });
 }
+
+function findCharacterPosition(string, character) {
+    const position = string.indexOf(character);
+  
+    if (position !== -1) {
+      return position;
+    } else {
+      return -1; 
+    }
+  }
+  
