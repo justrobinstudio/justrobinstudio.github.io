@@ -8,7 +8,7 @@
 </head>
 <body>
   <div style="text-align: right; width: 100%; max-width: 500px; margin-top: 5px; font-size: 30px;">
-    <button onclick="cycleColorScheme()" style="font-size: 85%; font-variation-settings: 'wght'400; background-color: #00000000; border:none; cursor: pointer;">
+    <button onclick="cycleColorSchemex()" style="font-size: 85%; font-variation-settings: 'wght'400; background-color: #00000000; border:none; cursor: pointer;">
       <i class="fa-solid fa-palette"></i>
   </button>  
   </div>
@@ -58,7 +58,9 @@
   
 
 <script>
-
+function cycleColorSchemex(){
+  cycleColorScheme();
+}
   
   /*URL PARAM*/
   const urlParams = new URLSearchParams(window.location.search);
