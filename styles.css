@@ -8,6 +8,7 @@
         color: var(--secondtext-color);
     }
 
+    
     :root{
         --bg-color: #FCF6B1;
         --primary-color:##2D1E2F;
@@ -22,7 +23,7 @@
 
     :root.scheme-1 {
         --bg-color: #FCF6B1;
-        --primary-color:##2D1E2F;
+        --primary-color:#2D1E2F;
         --accent-color: #F7B32B;
         --accenttext-color: var(--bg-color);
         --second-color: #B8B8D1;
@@ -33,7 +34,8 @@
     }
 
     :root.scheme-2 {
-        --bg-color: #23F0C7;
+        --xbg-color: #23F0C7;
+        --bg-color: #F6B6B8;
         --primary-color: #6457A6;
         --accent-color: #F6B6B8;
         --accenttext-color: var(--bg-color);
@@ -56,6 +58,17 @@
         --chat-border: var(--secondtext-color);
     }
 
+    :root.scheme-4 {
+        --bg-color: 3d405b;
+        --primary-color: 3d405b;
+        --accent-color: #f2cc8f;
+        --accenttext-color: var(--bg-color);
+        --second-color: #e07a5f;
+        --secondtext-color: #2D1E2F;
+        --h1: #e07a5f;
+        --chat: #3d405b;
+        --chat-border: #e07a5f;
+    }
     ::-webkit-scrollbar {
         position:absolute;
         top: 0; 
@@ -64,7 +77,7 @@
     }
 
     ::-webkit-scrollbar-track {
-        background : var(--secondtext-color); 
+        background : var(--chat-border); 
     }
 
     ::-webkit-scrollbar-thumb {
@@ -125,7 +138,7 @@
 
     .headerContainer{
         border-radius: 10px 10px 0px 0px;
-        background-color: var(--secondtext-color);
+        background-color: var(--chat-border);
         color:var(--chat-border);
         width: 100%;
         max-width: 500px;
@@ -163,7 +176,7 @@
 
     .divider{
         font-size: 15px;
-        background-color: rgba(0, 0, 0, 0.2);
+        background-color: rgba(255, 255, 255, 0.5);
         color:var(--secondtext-color)
     }
 
