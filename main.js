@@ -385,14 +385,3 @@ function findCharacterPosition(string, character) {
   }
 
  
-function cycleColorScheme() {
-  const root = document.documentElement;
-  root.classList.remove(`scheme-${currentScheme}`);
-
-  currentScheme++;
-  if (currentScheme > 4) {
-    currentScheme = 1; 
-  }
-
-  root.classList.add(`scheme-${currentScheme}`);
-}

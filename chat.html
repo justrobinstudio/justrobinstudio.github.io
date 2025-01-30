@@ -8,9 +8,10 @@
 </head>
 <body>
   <div style="text-align: right; width: 100%; max-width: 500px; margin-top: 5px; font-size: 30px;">
-    <button onclick="cycleColorScheme()" style="font-size: 85%; font-variation-settings: 'wght'400; background-color: #00000000; border:none; cursor: pointer;">
+   <!--<button onclick="cycleColorScheme()" style="font-size: 85%; font-variation-settings: 'wght'400; background-color: #00000000; border:none; cursor: pointer;">
       <i class="fa-solid fa-palette"></i>
-  </button>  
+  </button>
+-->  
   </div>
   <h1>LATIHAN</h1>
     
@@ -28,7 +29,10 @@
     <i class="fa-solid fa-house" style="color:var(--accent-color); font-size: 75%; margin-right: 5px;"></i>
     <button class="headerText" onclick="letsGo('landingpage.html')" style="font-size: 85%; font-variation-settings: 'wght'400; background-color: #00000000; border:none; cursor: pointer;">Menu Utama</button>
 </div>
-    
+
+
+<button class="headerText" onclick="cycleColorScheme()" style="font-size: 75%; font-variation-settings: 'wght'300; background-color: #00000000; border:none; cursor: pointer;">Ganti Tema</button>
+
     </div>
     <div class="chatContainer">
      
@@ -58,7 +62,8 @@
   
 
 <script>
-  currentScheme = 1
+  currentScheme = 0;
+  cycleColorScheme();
 function cycleColorScheme() {
   const root = document.documentElement;
   root.classList.remove(`scheme-${currentScheme}`);
